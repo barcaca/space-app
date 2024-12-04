@@ -39,7 +39,7 @@ Este projeto é uma aplicação desenvolvida no curso da OracleOne-Alura. O Spac
 
 ## 🔗 Links
 
-- [Live Site URL](https://space-app-eight-jade.vercel.app)
+- [Live Site URL](https://space-app-barcaca.vercel.app)
 
 ## 🏆 Conclusion
 
