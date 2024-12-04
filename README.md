@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Space App
 
-## Getting Started
+Este projeto é uma aplicação desenvolvida no curso da OracleOne-Alura. O Space App é uma aplicação web moderna criada para visualizar fotos impressionantes do espaço. Ele fornece aos usuários uma interface intuitiva para explorar imagens de alta qualidade, categorizadas por temas e capturas astronômicas notáveis.
 
-First, run the development server:
+## 📑 Table of Contents
+- 🖼️ [Screenshots](#-screenshots)
+- 🛠️ [Technologies](#-technologies)
+- 🏗️ [Features](#-features)
+- 🔗 [Links](#-links)
+- 🏆 [Conclusion](#-conclusion)
+- 📚 [Useful Resources](#-useful-resources)
+- 👤 [Author](#-author)
+- 📜 [License](#-license)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🖼️ Screenshots
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Light Theme](/public/thumbnail-light.png)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Technologies
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![Next.js](https://img.shields.io/badge/Next.js-%23000000?style=for-the-badge&logo=next.js&logoColor=white)
 
-## Learn More
+![React](https://img.shields.io/badge/React-%2361DAFB?style=for-the-badge&logo=react&logoColor=black)
 
-To learn more about Next.js, take a look at the following resources:
+![TypeScript](https://img.shields.io/badge/TypeScript-%233178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-%2306B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![Shadcn UI](https://img.shields.io/badge/Shadcn_UI-%23000000?style=for-the-badge&logo=shadcnui&logoColor=white)
 
-## Deploy on Vercel
+![Biome](https://img.shields.io/badge/Biome-%2360A5FA?style=for-the-badge&logo=biome&logoColor=white)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🏗️ Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Explore uma galeria de fotos espaciais de tirar o fôlego
+- Filtre imagens por categorias como nebulosas, galáxias, estrelas e luas
+- Design responsivo para proporcionar uma experiência fluida em dispositivos móveis e desktops
+- Performance otimizada para carregamento rápido das imagens
+
+## 🔗 Links
+
+- [Live Site URL](https://organo.example.com)
+
+## 🏆 Conclusion
+
+Desenvolver o Space App foi uma jornada fascinante que destacou a capacidade de criar experiências visuais imersivas. Aprendizados-chave incluem:
+
+- Criação de uma interface intuitiva e atrativa para explorar imagens espaciais
+- Implementação de performance e responsividade com ferramentas modernas como Next.js e Tailwind CSS
+- Organização e tipagem do código com TypeScript
+
+## 📚 Useful Resources
+
+- [Next.js Docs](https://nextjs.org/docs)
+- [React Docs](https://reactjs.org/docs)
+- [TypeScript Docs](https://www.typescriptlang.org/docs/)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+- [Shadcn UI Docs](https://ui.shadcn.com)
+- [Biome Docs](https://biomejs.dev/docs/)
+
+## 👤 Author
+
+- [@barcaca](https://www.github.com/barcaca)
+
+## 📜 License
+
+This project is open source and available under the [MIT License](LICENSE).

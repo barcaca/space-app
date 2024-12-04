@@ -1,101 +1,86 @@
-import Image from "next/image";
+import { Galeria } from '@/components/galeria'
+import { NavItems } from '@/components/nav-items'
+import { Tags } from '@/components/tags'
+import { Button } from '@/components/ui/button'
+import fotosData from '@/data/fotos.json'
+import tagsData from '@/data/tags.json'
+import bannerImg from '@/public/banner.png'
+import Image from 'next/image'
 
-export default function Home() {
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
+
+export default async function Home({
+  searchParams,
+}: { searchParams: SearchParams }) {
+  const { tag: tagFilterString = 'todas', search: searchQuery } =
+    await searchParams
+  const tagFilter = tagsData.find(
+    ({ titulo }) =>
+      titulo.toLowerCase() === (tagFilterString as string).toLowerCase()
+  )
+  const filteredPhotos =
+    tagFilter?.id === 0
+      ? fotosData
+      : fotosData.filter(({ tagId }) => tagId === tagFilter?.id)
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="mt-16 grid gap-6 sm:grid-cols-5">
+      <div className="col-span-5 flex grid-cols-5 gap-6 md:grid">
+        <aside className="hidden sm:block">
+          <ul className="flex flex-col gap-2">
+            <NavItems />
+          </ul>
+        </aside>
+        <Banner />
+      </div>
+      <main className="col-span-5 w-full space-y-6 lg:col-span-4 lg:col-start-2">
+        <Tags tag={tagFilterString as string} />
+        <div className="grid gap-6 sm:grid-cols-5">
+          <Galeria fotos={filteredPhotos} />
+          <Populares />
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
-  );
+  )
+}
+
+const Banner = () => {
+  return (
+    <section className="relative isolate col-span-5 w-full overflow-hidden rounded-3xl py-24 shadow-md sm:col-span-4 sm:py-32">
+      <figure className="-z-10 absolute inset-0 h-full w-full">
+        <Image src={bannerImg} alt="" className="h-full w-full object-cover" />
+      </figure>
+      <div
+        className="-z-10 absolute inset-0 transform-gpu bg-foreground/30 blur-3xl"
+        aria-hidden="true"
+      />
+      <div className="w-fit max-w-md px-6 lg:px-8">
+        <h1 className="font-bold text-2xl text-primary-foreground tracking-tight sm:text-4xl">
+          A galeria mais completa de fotos do espaço!
+        </h1>
+      </div>
+    </section>
+  )
+}
+
+const Populares = () => {
+  return (
+    <div className="space-y-6">
+      <h2 className="text-lg text-primary-foreground sm:text-2xl">Populares</h2>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <Image
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+          key={index}
+          src={`/populares/foto-${index + 1}.png`}
+          alt=""
+          className="aspect-video w-full rounded-md object-cover shadow-md md:aspect-square"
+          width={256}
+          height={256}
+        />
+      ))}
+      <Button className="w-full" variant={'outline'} disabled>
+        Ver mais
+      </Button>
+    </div>
+  )
 }
